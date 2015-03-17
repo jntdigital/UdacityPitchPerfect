@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HLM-Jc-DqO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HLM-Jc-DqO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -58,10 +58,10 @@
                                 <exclude reference="ilr-Y5-39h"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6dj-s2-mNy"/>
-                                <exclude reference="Kff-ts-PMk"/>
                                 <exclude reference="PXZ-Mp-aiN"/>
                                 <exclude reference="s4k-hM-Lcd"/>
+                                <exclude reference="6dj-s2-mNy"/>
+                                <exclude reference="Kff-ts-PMk"/>
                                 <exclude reference="0m8-l8-mcK"/>
                                 <exclude reference="Okn-3z-DCV"/>
                             </mask>
@@ -73,10 +73,10 @@
                                 <include reference="ilr-Y5-39h"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6dj-s2-mNy"/>
-                                <include reference="Kff-ts-PMk"/>
                                 <include reference="PXZ-Mp-aiN"/>
                                 <include reference="s4k-hM-Lcd"/>
+                                <include reference="6dj-s2-mNy"/>
+                                <include reference="Kff-ts-PMk"/>
                                 <include reference="0m8-l8-mcK"/>
                                 <include reference="Okn-3z-DCV"/>
                             </mask>
@@ -102,6 +102,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Mze-k6-hFm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ANA-ZE-JtU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a71-IY-bGR">
@@ -113,33 +114,69 @@
                                     <action selector="playSlowAudio:" destination="VPp-jS-XY5" eventType="touchUpInside" id="uA6-rr-mba"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fs-kB-VDf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="PlayFastButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playFastAudio:" destination="VPp-jS-XY5" eventType="touchUpInside" id="Xqm-ww-KEV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d56-ZA-xNg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="StopButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopPlayback:" destination="VPp-jS-XY5" eventType="touchUpInside" id="dzx-9q-S9l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="d56-ZA-xNg" secondAttribute="centerY" constant="-232" id="CBI-DN-VoD"/>
                             <constraint firstAttribute="centerY" secondItem="a71-IY-bGR" secondAttribute="centerY" constant="123" id="CWF-Op-GVa"/>
+                            <constraint firstAttribute="centerX" secondItem="d56-ZA-xNg" secondAttribute="centerX" id="Syv-Ex-Dtj"/>
+                            <constraint firstAttribute="centerX" secondItem="3Fs-kB-VDf" secondAttribute="centerX" constant="-83" id="Vkb-Dg-hAK"/>
+                            <constraint firstAttribute="centerY" secondItem="3Fs-kB-VDf" secondAttribute="centerY" constant="123" id="iIE-Kn-QAA"/>
                             <constraint firstAttribute="centerX" secondItem="a71-IY-bGR" secondAttribute="centerX" constant="84" id="osx-6L-wcD"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="a71-IY-bGR"/>
+                                <exclude reference="3Fs-kB-VDf"/>
+                                <exclude reference="d56-ZA-xNg"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="CWF-Op-GVa"/>
                                 <exclude reference="osx-6L-wcD"/>
+                                <exclude reference="Vkb-Dg-hAK"/>
+                                <exclude reference="iIE-Kn-QAA"/>
+                                <exclude reference="CBI-DN-VoD"/>
+                                <exclude reference="Syv-Ex-Dtj"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="a71-IY-bGR"/>
+                                <include reference="3Fs-kB-VDf"/>
+                                <include reference="d56-ZA-xNg"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="CWF-Op-GVa"/>
                                 <include reference="osx-6L-wcD"/>
+                                <include reference="Vkb-Dg-hAK"/>
+                                <include reference="iIE-Kn-QAA"/>
+                                <include reference="CBI-DN-VoD"/>
+                                <include reference="Syv-Ex-Dtj"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="PlayFastAuido" destination="3Fs-kB-VDf" id="ACN-DM-XLd"/>
                         <outlet property="PlaySlowAudio" destination="a71-IY-bGR" id="jkO-de-XgV"/>
+                        <outlet property="StopPlaying" destination="d56-ZA-xNg" id="eix-6U-rFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E8-Nl-rW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,6 +204,7 @@
     </scenes>
     <resources>
         <image name="Microphone" width="100" height="100"/>
+        <image name="PlayFastButton" width="100" height="100"/>
         <image name="PlaySlowButton" width="100" height="100"/>
         <image name="StopButton" width="50" height="50"/>
     </resources>
