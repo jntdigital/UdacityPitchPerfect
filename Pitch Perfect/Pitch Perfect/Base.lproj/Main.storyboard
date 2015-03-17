@@ -57,10 +57,10 @@
                                 <exclude reference="y2l-jO-LfT"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6dj-s2-mNy"/>
-                                <exclude reference="Kff-ts-PMk"/>
                                 <exclude reference="PXZ-Mp-aiN"/>
                                 <exclude reference="s4k-hM-Lcd"/>
+                                <exclude reference="6dj-s2-mNy"/>
+                                <exclude reference="Kff-ts-PMk"/>
                                 <exclude reference="0m8-l8-mcK"/>
                                 <exclude reference="Hyw-2A-hiF"/>
                             </mask>
@@ -72,10 +72,10 @@
                                 <include reference="y2l-jO-LfT"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6dj-s2-mNy"/>
-                                <include reference="Kff-ts-PMk"/>
                                 <include reference="PXZ-Mp-aiN"/>
                                 <include reference="s4k-hM-Lcd"/>
+                                <include reference="6dj-s2-mNy"/>
+                                <include reference="Kff-ts-PMk"/>
                                 <include reference="0m8-l8-mcK"/>
                                 <include reference="Hyw-2A-hiF"/>
                             </mask>
@@ -138,8 +138,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playChipmunkAudio:" destination="VPp-jS-XY5" eventType="touchUpInside" id="37c-sE-fj6"/>
-                                    <action selector="playCipmunkVoice:" destination="VPp-jS-XY5" eventType="touchUpInside" id="16J-kB-d28"/>
+                                    <action selector="playChipmunkAudio:" destination="VPp-jS-XY5" eventType="touchUpInside" id="AWE-Xa-Sab"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFK-Gh-TZX">
@@ -174,16 +173,16 @@
                                 <exclude reference="tFK-Gh-TZX"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="CWF-Op-GVa"/>
-                                <exclude reference="osx-6L-wcD"/>
                                 <exclude reference="Vkb-Dg-hAK"/>
                                 <exclude reference="iIE-Kn-QAA"/>
                                 <exclude reference="GsA-gp-flV"/>
                                 <exclude reference="Zev-xU-TFv"/>
-                                <exclude reference="3Dk-fj-nMS"/>
-                                <exclude reference="8au-nG-EHp"/>
+                                <exclude reference="CWF-Op-GVa"/>
+                                <exclude reference="osx-6L-wcD"/>
                                 <exclude reference="CBI-DN-VoD"/>
                                 <exclude reference="Syv-Ex-Dtj"/>
+                                <exclude reference="3Dk-fj-nMS"/>
+                                <exclude reference="8au-nG-EHp"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -195,16 +194,16 @@
                                 <include reference="tFK-Gh-TZX"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="CWF-Op-GVa"/>
-                                <include reference="osx-6L-wcD"/>
                                 <include reference="Vkb-Dg-hAK"/>
                                 <include reference="iIE-Kn-QAA"/>
                                 <include reference="GsA-gp-flV"/>
                                 <include reference="Zev-xU-TFv"/>
-                                <include reference="3Dk-fj-nMS"/>
-                                <include reference="8au-nG-EHp"/>
+                                <include reference="CWF-Op-GVa"/>
+                                <include reference="osx-6L-wcD"/>
                                 <include reference="CBI-DN-VoD"/>
                                 <include reference="Syv-Ex-Dtj"/>
+                                <include reference="3Dk-fj-nMS"/>
+                                <include reference="8au-nG-EHp"/>
                             </mask>
                         </variation>
                     </view>
