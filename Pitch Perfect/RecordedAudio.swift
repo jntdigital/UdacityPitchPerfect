@@ -11,4 +11,9 @@ import Foundation
 class RecordedAudio: NSObject{
     var filePathURL: NSURL!
     var title: String!
+    
+    override init() {
+        filePathURL = nil
+        title = "default.wav"
+    }
 }

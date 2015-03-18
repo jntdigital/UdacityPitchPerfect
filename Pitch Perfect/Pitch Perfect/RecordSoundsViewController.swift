@@ -14,6 +14,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordinginProgress: UILabel!
     @IBOutlet weak var stopRecording: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var tapLabel: UILabel!
+    
     
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: RecordedAudio!
@@ -31,10 +33,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(animated: Bool) {
         stopRecording.hidden = true
         recordButton.enabled = true
+        tapLabel.hidden = false
     }
 
     @IBAction func stopRecordingInProgress(sender: UIButton) {
         recordinginProgress.hidden = true
+        tapLabel.hidden = false
         stopRecording.hidden = true
         recordButton.enabled = true
         audioRecorder.stop()
@@ -46,6 +50,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(sender: UIButton) {
         stopRecording.hidden = false
         recordinginProgress.hidden = false
+        tapLabel.hidden = true
         recordButton.enabled = false
         println("in recordAudio")
         
@@ -96,6 +101,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             println("Recording was not successful")
             recordButton.enabled = true
             stopRecording.hidden = true
+            tapLabel.hidden = false
         }
     }
 }
