@@ -16,6 +16,7 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var StopPlaying: UIButton!
     @IBOutlet weak var PlayChipmunk: UIButton!
     @IBOutlet weak var PlayDarthVader: UIButton!
+    @IBOutlet weak var PlayReverb: UIButton!
     
     var audioPlayer:AVAudioPlayer!
     var recievedAudio:RecordedAudio!
@@ -33,6 +34,15 @@ class PlaySoundsViewController: UIViewController {
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: recievedAudio.filePathURL, error: nil)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        //change button alphas
+        PlaySlowAudio.alpha = 0.8
+        PlayFastAuido.alpha = 0.8
+        PlayChipmunk.alpha = 0.8
+        PlayDarthVader.alpha = 0.8
+        PlayReverb.alpha = 0.8
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,6 +51,13 @@ class PlaySoundsViewController: UIViewController {
     
 
     @IBAction func playSlowAudio(sender: UIButton) {
+        //change button alphas
+        PlaySlowAudio.alpha = 1.0
+        PlayFastAuido.alpha = 0.3
+        PlayChipmunk.alpha = 0.3
+        PlayDarthVader.alpha = 0.3
+        PlayReverb.alpha = 0.3
+        
         // Play slow Audio here
         audioEngine.stop()
         audioEngine.reset()
@@ -48,9 +65,18 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.rate = 0.5
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
+        StopPlaying.hidden = false
     }
     
     @IBAction func playFastAudio(sender: UIButton) {
+        //change button alphas
+        PlaySlowAudio.alpha = 0.3
+        PlayFastAuido.alpha = 1.0
+        PlayChipmunk.alpha = 0.3
+        PlayDarthVader.alpha = 0.3
+        PlayReverb.alpha = 0.3
+        
+        
         //Play Fast audio here
         audioEngine.stop()
         audioEngine.reset()
@@ -58,6 +84,7 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.rate = 2.0
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
+        StopPlaying.hidden = false
     }
     
     @IBAction func stopPlayback(sender: UIButton) {
@@ -65,12 +92,54 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
+        
+        //change button alphas
+        PlaySlowAudio.alpha = 0.8
+        PlayFastAuido.alpha = 0.8
+        PlayChipmunk.alpha = 0.8
+        PlayDarthVader.alpha = 0.8
+        PlayReverb.alpha = 0.8
     }
     
-    @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioWithVariablePitch(1000)
+    @IBAction func playReverbAudio(sender: UIButton) {
+        //change button alphas
+        PlaySlowAudio.alpha = 0.3
+        PlayFastAuido.alpha = 0.3
+        PlayChipmunk.alpha = 0.3
+        PlayDarthVader.alpha = 0.3
+        PlayReverb.alpha = 1.0
+        
+        playAudioWithReverb(80)
         
     }
+    
+    
+    @IBAction func playChipmunkAudio(sender: UIButton) {
+        //change button alphas
+        PlaySlowAudio.alpha = 0.3
+        PlayFastAuido.alpha = 0.3
+        PlayChipmunk.alpha = 1.0
+        PlayDarthVader.alpha = 0.3
+        PlayReverb.alpha = 0.3
+        
+        
+        playAudioWithVariablePitch(1000)
+        StopPlaying.hidden = false
+        
+    }
+    
+    @IBAction func playDarthVaderAudio(sender: UIButton) {
+        //change button alphas
+        PlaySlowAudio.alpha = 0.3
+        PlayFastAuido.alpha = 0.3
+        PlayChipmunk.alpha = 0.3
+        PlayDarthVader.alpha = 1.0
+        PlayReverb.alpha = 0.3
+        
+        
+        playAudioWithVariablePitch(-1000)
+    }
+    
     
     func playAudioWithVariablePitch(pitch: Float){
         
@@ -94,10 +163,30 @@ class PlaySoundsViewController: UIViewController {
         audioPlayerNode.play()
     }
     
-    @IBAction func playDarthVaderAudio(sender: UIButton) {
-        playAudioWithVariablePitch(-1000)
+    func playAudioWithReverb(reverb: Float){
+        
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        var reverbEffect = AVAudioUnitReverb()
+        reverbEffect.wetDryMix = reverb
+        audioEngine.attachNode(reverbEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: reverbEffect, format: nil)
+        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(nil)
+        
+        audioPlayerNode.play()
+        
     }
     
+
     
     /*
     // MARK: - Navigation
