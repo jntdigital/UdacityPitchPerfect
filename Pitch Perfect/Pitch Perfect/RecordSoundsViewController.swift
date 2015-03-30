@@ -52,8 +52,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordinginProgress.hidden = false
         tapLabel.hidden = true
         recordButton.enabled = false
-        println("in recordAudio")
-        
+                
         //TODO: Record voice
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
@@ -90,9 +89,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if(flag){
             // save recorded audio
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathURL = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            recordedAudio = RecordedAudio(filePathURL: recorder.url, title: recorder.url.lastPathComponent!)
             
             //make a segue
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)

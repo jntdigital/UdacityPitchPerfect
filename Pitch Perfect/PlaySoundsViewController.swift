@@ -36,12 +36,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //change button alphas
-        PlaySlowAudio.alpha = 0.8
-        PlayFastAuido.alpha = 0.8
-        PlayChipmunk.alpha = 0.8
-        PlayDarthVader.alpha = 0.8
-        PlayReverb.alpha = 0.8
+        changeButtonStates(false, slow: false, chipmunk: false, vader: false, reverb: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +46,8 @@ class PlaySoundsViewController: UIViewController {
     
 
     @IBAction func playSlowAudio(sender: UIButton) {
-        //change button alphas
-        PlaySlowAudio.alpha = 1.0
-        PlayFastAuido.alpha = 0.3
-        PlayChipmunk.alpha = 0.3
-        PlayDarthVader.alpha = 0.3
-        PlayReverb.alpha = 0.3
+        //change button state
+        changeButtonStates(false, slow: true, chipmunk: false, vader: false, reverb: false)
         
         // Play slow Audio here
         audioEngine.stop()
@@ -69,12 +60,8 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playFastAudio(sender: UIButton) {
-        //change button alphas
-        PlaySlowAudio.alpha = 0.3
-        PlayFastAuido.alpha = 1.0
-        PlayChipmunk.alpha = 0.3
-        PlayDarthVader.alpha = 0.3
-        PlayReverb.alpha = 0.3
+        //change button state
+        changeButtonStates(true, slow: false, chipmunk: false, vader: false, reverb: false)
         
         
         //Play Fast audio here
@@ -93,21 +80,13 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.stop()
         audioEngine.reset()
         
-        //change button alphas
-        PlaySlowAudio.alpha = 0.8
-        PlayFastAuido.alpha = 0.8
-        PlayChipmunk.alpha = 0.8
-        PlayDarthVader.alpha = 0.8
-        PlayReverb.alpha = 0.8
+        changeButtonStates(false, slow: false, chipmunk: false, vader: false, reverb: false)
+
     }
     
     @IBAction func playReverbAudio(sender: UIButton) {
-        //change button alphas
-        PlaySlowAudio.alpha = 0.3
-        PlayFastAuido.alpha = 0.3
-        PlayChipmunk.alpha = 0.3
-        PlayDarthVader.alpha = 0.3
-        PlayReverb.alpha = 1.0
+        //change button state
+        changeButtonStates(false, slow: false, chipmunk: false, vader: false, reverb: true)
         
         playAudioWithReverb(80)
         
@@ -115,12 +94,8 @@ class PlaySoundsViewController: UIViewController {
     
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        //change button alphas
-        PlaySlowAudio.alpha = 0.3
-        PlayFastAuido.alpha = 0.3
-        PlayChipmunk.alpha = 1.0
-        PlayDarthVader.alpha = 0.3
-        PlayReverb.alpha = 0.3
+        //change button state
+        changeButtonStates(false, slow: false, chipmunk: true, vader: false, reverb: false)
         
         
         playAudioWithVariablePitch(1000)
@@ -129,17 +104,22 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playDarthVaderAudio(sender: UIButton) {
-        //change button alphas
-        PlaySlowAudio.alpha = 0.3
-        PlayFastAuido.alpha = 0.3
-        PlayChipmunk.alpha = 0.3
-        PlayDarthVader.alpha = 1.0
-        PlayReverb.alpha = 0.3
+        //change button state
+        changeButtonStates(false, slow: false, chipmunk: false, vader: true, reverb: false)
         
         
         playAudioWithVariablePitch(-1000)
     }
     
+    func changeButtonStates(fast: Bool, slow: Bool, chipmunk: Bool, vader: Bool, reverb: Bool) {
+        
+        PlaySlowAudio.selected = slow
+        PlayFastAuido.selected = fast
+        PlayChipmunk.selected = chipmunk
+        PlayDarthVader.selected = vader
+        PlayReverb.selected = reverb
+        
+    }
     
     func playAudioWithVariablePitch(pitch: Float){
         
@@ -161,6 +141,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.startAndReturnError(nil)
         
         audioPlayerNode.play()
+        
     }
     
     func playAudioWithReverb(reverb: Float){
